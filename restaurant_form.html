@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h4>Restraurant Booking Form</h4>
+    <form method="POST" action="#">
+        <table style="border: 2px solid;" cellspacing="2px" cellpadding="2">
+            <tr>
+                <td>
+                    <label for="bookingchoice">Choice of booking</label>
+                    <select name="bokingchoice" id="bookingchoice" required>
+                    <option value="Booking Choice" selected>Booking Choice</option>
+                    
+                    <option value="Full Day Booking">Full Day Booking</option>
+                    <option value="Half Day Booking">Half Day Booking</option>
+                    <option value="Hourly Booking">Hourly Booking</option>
+                </select>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                <label for="uname">User name</label>
+                <input type="text" name="uname" id="uname" required>
+            </td>
+            </tr>
+            <tr>
+                <td>
+                <label for="mnum">Mobile No</label>
+                <input type="tel" name="mnum" id="mnum" required>
+            </td>
+            </tr>
+            <tr>
+                <td>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" required>
+            </td>
+            </tr>
+            <tr>
+                <td>
+                <label for="nop">No of person</label>
+                <input type="number" name="nop" id="nop" min="1" required>
+            </td>
+            </tr>
+            <tr style="display: none;">
+                <td >
+                    <label for="date">Date</label>
+                    <input type="date" name="date" id="date">
+                </td>
+            </tr>
+
+            <tr style="display: none;">
+                <td >
+                    <label for="time">Time</label>
+                    <input type="time" name="time" id="time">
+                </td>
+            </tr>
+            <tr style="display: none;">
+                <td >
+                    <label for="slot">Slot</label>
+                    <select name="slot" id="slot">
+                        <option value="breakfast">Breakfast</option>
+                        <option value="lunch">Lunch</option>
+                        <option value="dinner">Dinner</option>
+                        
+                    </select>
+                </td>
+            </tr>
+
+        </table>
+
+    </form>
+    <script>
+        
+        const toggleDate = () =>{
+            let b = document.getElementById('bookingchoice').value
+            let a = document.getElementById('date').parentElement.parentElement
+            let s = document.getElementById('slot').parentElement.parentElement
+            let t = document.getElementById('time').parentElement.parentElement
+
+            if ( b === 'Full Day Booking'){
+                a.style.display='table-row'
+                s.style.display = 'none'
+                t.style.display = 'none'
+
+            }
+            else if (b === 'Half Day Booking'){
+                a.style.display='table-row'
+                s.style.display='table-row'
+                t.style.display = 'none'
+            }
+
+            else if (b === 'Hourly Booking'){
+                a.style.display='table-row'
+                s.style.display = 'none'
+                t.style.display = 'table-row'
+
+            }
+            else {
+            a.style.display = 'none'
+            s.style.display = 'none'
+            t.style.display = 'none'
+            }
+        }
+
+        document.getElementById('bookingchoice').addEventListener('change', toggleDate);
+       
+
+    </script>
+</body>
+</html>

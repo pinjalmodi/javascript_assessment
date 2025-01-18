@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h4>Restraurant Booking Form</h4>
+    <form method="POST" action="#">
+
+        <table style="border: 2px solid;" cellspacing="2px" cellpadding="2">
+
+            <thead>
+            <tr>
+                <td>
+                    <label for="bookingchoice">Choice of booking</label>
+                    <select name="bookingchoice" id="bookingchoice" required onchange="toggleDate()">
+                    <option value="Booking Choice" selected>Booking Choice</option>
+                    
+                    <option value="Full Day Booking">Full Day Booking</option>
+                    <option value="Half Day Booking">Half Day Booking</option>
+                    <option value="Hourly Booking">Hourly Booking</option>
+                </select>
+                </td>
+            </tr>
+            </thead>
+        <tbody id="datef">            
+            <tr>
+                <td>
+                <label for="uname">User name</label>
+                <input type="text" name="uname" id="uname" required>
+            </td>
+            </tr>
+            <tr>
+                <td>
+                <label for="mnum">Mobile No</label>
+                <input type="tel" name="mnum" id="mnum" required>
+            </td>
+            </tr>
+            <tr>
+                <td>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" required>
+            </td>
+            </tr>
+            <tr>
+                <td>
+                <label for="nop">No of person</label>
+                <input type="number" name="nop" id="nop" min="1" required>
+            </td>
+            </tr> 
+        </tbody>
+
+        </table>
+
+    </form>
+    <script>
+
+       
+        
+        const toggleDate = () =>{
+            let b = document.getElementById('bookingchoice').value
+            const datef = document.getElementById('datef')
+            const daterows = document.querySelectorAll('.daterow');
+
+            
+            daterows.forEach(row => {
+                row.remove();
+            });
+
+            if ( b == 'Full Day Booking'){
+            const arow = createNode('tr')
+            arow.className = 'daterow'
+
+            
+            const alabel = createNode('td');
+          //  const aInputCell = createNode('td');
+
+            const label = createNode('label')
+            label.setAttribute('for','date')
+            label.textContent = 'Date'
+
+            const ainput = createNode('input')
+            ainput.type = 'date'
+            ainput.id = 'date'
+            ainput.name = 'date'
+            ainput.required = true
+
+            datef.appendChild(arow);
+
+            arow.appendChild(alabel);
+          //  arow.appendChild(aInputCell);
+
+            alabel.appendChild(label);
+            alabel.appendChild(ainput);
+
+           
+            }
+
+            else if ( b == 'Half Day Booking'){
+                let arow = createNode('tr');
+                arow.className = 'daterow';
+
+                let alabel = createNode('td');
+            //    let aInputCell = createNode('td');
+
+                let label = createNode('label');
+                label.setAttribute('for', 'date');
+                label.textContent = 'Date:';
+
+                let ainput = createNode('input');
+                ainput.type = 'date';
+                ainput.id = 'date';
+                ainput.name = 'date';
+                ainput.required = true;
+
+                alabel.appendChild(label);
+                alabel.appendChild(ainput);
+
+                arow.appendChild(alabel);
+           //     arow.appendChild(aInputCell);
+
+                datef.appendChild(arow);
+
+                // Slot Row
+                arow = createNode('tr');
+                arow.className = 'daterow';
+
+                alabel = createNode('td');
+             //   aInputCell = createNode('td');
+
+                label = createNode('label');
+                label.setAttribute('for', 'slot');
+                label.textContent = 'Slot:';
+
+                const slotSelect = createNode('select');
+                slotSelect.id = 'slot';
+                slotSelect.name = 'slot';
+                slotSelect.required = true;
+
+                const options = ['Select Slot', 'Breakfast', 'Lunch', 'Dinner'];
+                options.forEach(optionText => {
+                    const option = createNode('option');
+                    option.value = optionText.toLowerCase();
+                    option.textContent = optionText;
+                    slotSelect.appendChild(option);
+                });
+
+                alabel.appendChild(label);
+                alabel.appendChild(slotSelect);
+
+                arow.appendChild(alabel);
+              //  arow.appendChild(aInputCell);
+
+                datef.appendChild(arow);
+            }
+        
+
+            else if (b == 'Hourly Booking') {
+                // Date Row
+                let arow = createNode('tr');
+                arow.className = 'daterow';
+
+                let alabel = createNode('td');
+              //  let aInputCell = createNode('td');
+
+                let label = createNode('label');
+                label.setAttribute('for', 'date');
+                label.textContent = 'Date:';
+
+                let ainput = createNode('input');
+                ainput.type = 'date';
+                ainput.id = 'date';
+                ainput.name = 'date';
+                ainput.required = true;
+
+                alabel.appendChild(label);
+                alabel.appendChild(ainput);
+
+                arow.appendChild(alabel);
+            //    arow.appendChild(aInputCell);
+
+                datef.appendChild(arow);
+
+                // Time Row
+                arow = createNode('tr');
+                arow.className = 'daterow';
+
+                alabel = createNode('td');
+             //   aInputCell = createNode('td');
+
+                label = createNode('label');
+                label.setAttribute('for', 'time');
+                label.textContent = 'Time:';
+
+                const timeInput = createNode('input');
+                timeInput.type = 'time';
+                timeInput.id = 'time';
+                timeInput.name = 'time';
+                timeInput.required = true;
+
+                alabel.appendChild(label);
+                alabel.appendChild(timeInput);
+
+                arow.appendChild(alabel);
+            //    arow.appendChild(aInputCell);
+
+                datef.appendChild(arow);
+            }
+        }
+    
+        function createNode(element) {
+            return document.createElement(element);
+        } 
+        
+
+        
+
+       
+
+    </script>
+</body>
+</html>
